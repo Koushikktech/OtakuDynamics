@@ -8,10 +8,13 @@ function Home() {
   const [searchQuery, setSearchQuery] = useState("");
   const [animes, setAnimes] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchPopularAnimes().then(setAnimes);
+    fetchPopularAnimes().then((data) => {
+      setAnimes(data);
+      setLoading(false);
+    });
   }, []);
 
   const debouncedSearch = useCallback(

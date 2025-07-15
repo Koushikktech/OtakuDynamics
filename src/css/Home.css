@@ -28,6 +28,10 @@ body[data-theme="dark"] .home {
   box-shadow: 20.72px 10px 80px #ced0d3, -20.72px -20.72px 36px #ffffff;
 }
 
+body[data-theme="dark"] .search-input {
+  color: #fff;
+}
+
 body[data-theme="dark"] .search-input,
 body[data-theme="dark"] .search-submit {
   border: 1px solid #000000;
@@ -92,7 +96,7 @@ body[data-theme="dark"] .fill-icon-neutral {
 .loading {
   text-align: center;
   font-size: 1.3rem;
-  color: #ff5a5f;
+  color: #646cff;
   margin: 1.5rem 0;
   font-weight: bold;
 }
