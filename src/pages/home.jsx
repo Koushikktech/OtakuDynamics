@@ -82,7 +82,18 @@ function Home() {
           </svg>
         </button>
       </form>
-      {loading && <div className="loading">Loading...</div>}
+      <div className="anime-grid-container">
+        {loading && (
+          <div className="loading">
+            <img
+              src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><circle fill='%23FF156D' stroke='%23FF156D' stroke-width='15' r='15' cx='40' cy='100'><animate attributeName='opacity' calcMode='spline' dur='2' values='1;0;1;' keySplines='.5 0 .5 1;.5 0 .5 1' repeatCount='indefinite' begin='-.4'></animate></circle><circle fill='%23FF156D' stroke='%23FF156D' stroke-width='15' r='15' cx='100' cy='100'><animate attributeName='opacity' calcMode='spline' dur='2' values='1;0;1;' keySplines='.5 0 .5 1;.5 0 .5 1' repeatCount='indefinite' begin='-.2'></animate></circle><circle fill='%23FF156D' stroke='%23FF156D' stroke-width='15' r='15' cx='160' cy='100'><animate attributeName='opacity' calcMode='spline' dur='2' values='1;0;1;' keySplines='.5 0 .5 1;.5 0 .5 1' repeatCount='indefinite' begin='0'></animate></circle></svg>"
+              alt="Loading..."
+              width={100}
+              height={60}
+            />
+          </div>
+        )}
+      </div>
       <div className="anime-grid">
         {!loading &&
           animes.map((anime) => <Animecard key={anime.id} anime={anime} />)}

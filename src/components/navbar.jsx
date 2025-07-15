@@ -24,11 +24,20 @@ function Navbar() {
         >
           {theme === "light" ? (
             // Crescent Moon Icon
-            <svg width="24" height="24" fill="none" viewBox="0 0 24 24">
-              <path
-                fill="currentColor"
-                d="M21 12.5A9 9 0 0112.5 3c-.41 0-.82.03-1.22.08a8 8 0 109.64 9.64c.05-.4.08-.81.08-1.22z"
-              />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="lucide lucide-moon h-5 w-5 text-blue-500"
+              aria-hidden="true"
+            >
+              <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
             </svg>
           ) : (
             // Sun Icon

@@ -92,12 +92,16 @@ body[data-theme="dark"] .anime-grid {
 body[data-theme="dark"] .fill-icon-neutral {
   fill: #ced0d3;
 }
+
 .loading {
-  text-align: center;
-  font-size: 1.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150%;
+  font-size: 1rem;
   color: #646cff;
-  margin: 1.5rem 0;
   font-weight: bold;
+  margin-top: -35px;
 }
 
 @media (max-width: 900px) {
