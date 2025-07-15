@@ -1,6 +1,6 @@
 import { useAnimeContext } from "../contexts/animecontext";
 import Animecard from "../components/anime_card";
-import "../css/home.css";
+import "../css/Home.css";
 
 function Favorite() {
   const { favorites } = useAnimeContext();
