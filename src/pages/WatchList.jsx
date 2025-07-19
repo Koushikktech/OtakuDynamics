@@ -1,7 +1,7 @@
 import { useState } from "react";
 import AnimeInfo from "../components/AnimeInfo";
 import { useUser } from "../contexts/UserContext";
-import "../css/watchlist.css";
+import "../css/Watchlist.css";
 
 function Completedlist({ anime }) {
   const [showAnimeInfo, setShowAnimeInfo] = useState(false);
