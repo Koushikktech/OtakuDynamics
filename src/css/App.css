@@ -7,6 +7,6 @@
   flex-direction: column;
 }
 button {
-  -webkit-tap-highlight-color: transparent; /* removes blue tap highlight */
-  outline: none; /* removes focus outline */
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
 }

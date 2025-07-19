@@ -1,0 +1,144 @@
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(24, 24, 24, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+.popup {
+  background: white;
+  padding: 20px;
+  margin-bottom: -50px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 75%;
+  height: 505px;
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+}
+
+[data-theme="dark"] .popup {
+  background-color: #000000;
+}
+.close-btn {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 20px;
+  background: none;
+  border: none;
+  color: black;
+  cursor: pointer;
+}
+[data-theme="dark"] .close-btn {
+  color: #fff;
+}
+
+.anime-info-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  background-color: white;
+  color: white;
+  padding: 27px;
+}
+[data-theme="dark"] .anime-info-wrapper {
+  background-color: #000000;
+}
+.anime-cover {
+  position: relative;
+  width: 125px;
+  height: 181px;
+  overflow: hidden;
+  flex-shrink: 0;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 200, 221, 0.447);
+}
+
+.anime-title {
+  padding: 0px 0px 5px 0px;
+  font-weight: bold;
+  font-size: 150%;
+  margin-left: -40px;
+  color: rgb(240, 222, 178);
+}
+[data-theme="light"] .anime-title {
+  color: #000000;
+}
+.anime-info-title {
+  flex-direction: column;
+  padding: 0px 0px 0px 0px;
+}
+.anime-discription {
+  font-size: 0.85rem;
+  color: #989696;
+  max-width: 93%;
+  margin-left: -33px;
+}
+[data-theme="light"] .anime-discription {
+  color: #181818;
+}
+.anime-info-vertical-wrapper {
+  flex-direction: column;
+  min-width: 200px;
+}
+
+.anime-information-wrappern {
+  margin-top: 50px;
+}
+
+.anime-airing {
+  background-color: #0b1622;
+  padding: 8px;
+  max-width: 135px;
+  border-radius: 7px;
+  color: rgb(255, 200, 221);
+}
+
+.anime-information-div {
+  padding: 2px;
+  color: #fffbde;
+}
+[data-theme="light"] .anime-information-div {
+  color: #000000;
+}
+[data-theme="light"] .anime-genres {
+  color: #000000;
+}
+.anime-genres {
+  font-weight: bolder;
+  font-size: 1rem;
+  color: rgb(255, 255, 255);
+  max-width: 93%;
+  margin-left: -35px;
+  margin-top: -15px;
+}
+
+.animeinfo-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin-top: -15px;
+}
+
+.complete {
+  background-color: rgb(234, 218, 178);
+  color: #141212;
+  margin-bottom: 15px;
+}
+
+[data-theme="dark"] .complete {
+  color: #fffbde;
+  background-color: #141212;
+}
+.title-completed {
+  display: flex;
+  gap: 20px;
+}

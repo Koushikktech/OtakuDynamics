@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import Animecard from "../components/anime_card";
+import Animecard from "../components/AnimeCard.jsx";
 import { fetchPopularAnimes, searchAnimes } from "../services/api.js";
 import "../css/Home.css";
 import debounce from "lodash.debounce";
@@ -7,7 +7,6 @@ import debounce from "lodash.debounce";
 function Home() {
   const [searchQuery, setSearchQuery] = useState("");
   const [animes, setAnimes] = useState([]);
-  const [isSearching, setIsSearching] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -22,16 +21,15 @@ function Home() {
       const trimmedQuery = query.trim();
 
       if (trimmedQuery === "") {
-        setIsSearching(false);
         setLoading(true);
         fetchPopularAnimes().then((data) => {
           setAnimes(data);
           setLoading(false);
         });
       } else {
-        setIsSearching(true);
         setLoading(true);
         const results = await searchAnimes(trimmedQuery);
+        console.log(results)
         setAnimes(results);
         setLoading(false);
       }
@@ -42,14 +40,12 @@ function Home() {
   const Handlesearch = async (e) => {
     e.preventDefault();
     if (searchQuery.trim() === "") {
-      setIsSearching(false);
       setLoading(true);
       fetchPopularAnimes().then((data) => {
         setAnimes(data);
         setLoading(false);
       });
     } else {
-      setIsSearching(true);
       debouncedSearch(searchQuery);
     }
   };
@@ -94,7 +90,9 @@ function Home() {
           </div>
         )}
       </div>
+
       <div className="anime-grid">
+      <img src="/ayanokoji.png" alt="" className="ayanokoji"/>
         {!loading &&
           animes.map((anime) => <Animecard key={anime.id} anime={anime} />)}
       </div>

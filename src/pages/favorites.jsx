@@ -1,22 +1,26 @@
-import { useAnimeContext } from "../contexts/animecontext";
-import Animecard from "../components/anime_card";
+import { useUser } from "../contexts/UserContext.jsx";
+import Animecard from "../components/AnimeCard";
 import "../css/Home.css";
 
 function Favorite() {
-  const { favorites } = useAnimeContext();
+  const { favorites } = useUser();
 
   if (favorites && favorites.length > 0) {
     return (
-      <div className="anime-grid">
-        {favorites.map((anime) => (
-          <Animecard key={anime.id} anime={anime} />
-        ))}
-      </div>
+      <>
+        <img src="/rem.png" alt="" className="rem" />
+        <div className="anime-grid">
+          {favorites.map((anime) => (
+            <Animecard key={anime.id} anime={anime} />
+          ))}
+        </div>
+      </>
     );
   }
   return (
     <div className="Favorites-Empty">
-      <h3>No Favorites yet....</h3>
+      <img src="/rem.png" alt="" className="rem" />
+      <h3>No Animes in Favorites yet...</h3>
     </div>
   );
 }

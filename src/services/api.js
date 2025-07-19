@@ -38,10 +38,16 @@ export const fetchPopularAnimes = async () => {
   }
 };
 
-export const searchAnimes = async (searchQuery) => {
+export const searchAnimes = async (searchQuery, page) => {
   const query = `
-    query ($search: String) {
-      Page(page: 1, perPage: 20) {
+    query ($search: String, $page: Int) {
+      Page(page: $page, perPage: 20) {
+        pageInfo {
+          total
+          currentPage
+          lastPage
+          hasNextPage
+        }
         media(type: ANIME, search: $search) {
           id
           title {
@@ -72,5 +78,67 @@ export const searchAnimes = async (searchQuery) => {
   } catch (error) {
     console.error("Search failed:", error);
     return [];
+  }
+};
+
+export const getAnimeInfo = async (animeId) => {
+  const query = `
+    query ($id: Int) {
+      Media(id: $id, type: ANIME) {
+        title {
+          romaji
+          english
+        }
+        description
+        coverImage {
+          large
+        }
+        genres
+        startDate {
+          year
+          month
+          day
+        }
+        endDate {
+          year
+          month
+          day
+        }
+        episodes
+        averageScore
+        status
+        nextAiringEpisode {
+          episode
+          airingAt
+          timeUntilAiring
+        }
+      }
+    }
+  `;
+
+  try {
+    const response = await fetch("https://graphql.anilist.co", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({ query, variables: { id: animeId } }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const json = await response.json();
+
+    if (json.errors) {
+      throw new Error(json.errors[0].message);
+    }
+
+    return json.data.Media;
+  } catch (error) {
+    console.error("Info Retrieval failed:", error);
+    throw error;
   }
 };

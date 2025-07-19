@@ -10,10 +10,13 @@
   width: 145px;
   max-height: fit-content;
 }
-
 .anime-card:hover {
-  transform: translateY(-2px) scale(1.01);
+  transform: translateY(-2px) scale(1.025);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="dark"] .anime-card {
+  background-color: black;
 }
 
 .anime-poster {
