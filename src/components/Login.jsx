@@ -4,6 +4,7 @@ import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../services/config";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useUser } from "../contexts/UserContext";
 
 function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -13,6 +14,7 @@ function Login() {
   const navigate = useNavigate();
   const location = useLocation();
   const fromRegister = location.state?.fromRegister;
+  const { loginWithGoogle } = useUser();
   const handleLogin = async (e) => {
     e.preventDefault();
     setError("");
@@ -111,6 +113,17 @@ function Login() {
             <br />
             {error && <p>{error}</p>}
           </form>
+          <div className="divider">
+            <span>or</span>
+          </div>
+          <button className="google-login-btn" onClick={loginWithGoogle}>
+            <img
+              src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+              alt="Google logo"
+              className="google-icon"
+            />
+            <span>Sign in with Google</span>
+          </button>
         </div>
       </div>
     </>

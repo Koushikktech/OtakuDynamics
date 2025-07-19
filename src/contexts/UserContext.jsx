@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import {
   doc,
@@ -8,6 +9,7 @@ import {
   arrayRemove,
 } from "firebase/firestore";
 import { auth, db } from "../services/config";
+import { googleProvider, signInWithPopup } from "../services/config";
 
 const UserContext = createContext();
 export const useUser = () => useContext(UserContext);
@@ -23,6 +25,28 @@ export const UserProvider = ({ children }) => {
     setUser(null);
     setFavorites([]);
     setCompleted([]);
+  };
+  const navigate = useNavigate();
+  const loginWithGoogle = async () => {
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      const currUser = result.user;
+      setUser(currUser);
+
+      const ref = doc(db, "users", currUser.uid);
+      const snap = await getDoc(ref);
+
+      if (!snap.exists()) {
+        await setDoc(ref, {
+          email: currUser.email,
+          favorites: [],
+          completed: [],
+        });
+      }
+      navigate("/");
+    } catch (error) {
+      console.error("Google Sign-In Error:", error);
+    }
   };
 
   useEffect(() => {
@@ -105,6 +129,7 @@ export const UserProvider = ({ children }) => {
         addToCompleted,
         loading,
         logout,
+        loginWithGoogle,
       }}
     >
       {children}

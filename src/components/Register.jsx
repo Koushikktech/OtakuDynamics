@@ -4,6 +4,7 @@ import { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../services/config";
 import { useNavigate } from "react-router-dom";
+import { useUser } from "../contexts/UserContext";
 
 function Register() {
   const [showPassword, setShowPassword] = useState(false);
@@ -11,6 +12,7 @@ function Register() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
+  const { loginWithGoogle } = useUser();
   const navigate = useNavigate();
 
   const handleregister = async (e) => {
@@ -99,16 +101,29 @@ function Register() {
                   )}
                 </span>
               </div>
-              <p className="forgot-password">Forget Password?</p>
+              <br />
               <button type="submit" className="login-btn">
                 Sign up
               </button>
             </div>
           </form>
+          <br />
           {error && <p style={{ color: "red" }}>{error}</p>}
           {success && (
             <p style={{ color: "green" }}>Account created successfully!</p>
           )}
+          <div className="divider">
+            <span>or</span>
+          </div>
+
+          <button className="google-login-btn" onClick={loginWithGoogle}>
+            <img
+              src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+              alt="Google logo"
+              className="google-icon"
+            />
+            <span>Sign in with Google</span>
+          </button>
         </div>
       </div>
     </>
